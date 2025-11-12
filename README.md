@@ -1,1 +1,44 @@
 # cleanuparr-monitor
+
+Here is a simple utility container that enables/disables Cleanuparr Queue Cleaner based on internet connectivity.
+
+Minimal / No support
+
+## Usage
+
+Docker compose:
+```
+  cleanuparr:
+    image: ghcr.io/cleanuparr/cleanuparr:latest
+    container_name: cleanuparr
+    restart: unless-stopped
+    volumes:
+      - ./cleanup:/config
+    networks:
+      Other_NetworksABC:
+      Cleanuparr_Net:         # Shared internal network
+    environment:
+      - PORT=11011
+      - TZ=Europe/London
+    depends_on:
+      cleanuparr-monitor:
+        condition: service_started
+
+  cleanuparr-monitor:
+    build: ./cleanup-monitor # This repo
+    container_name: cleanuparr-monitor
+    restart: unless-stopped
+    networks:
+      Other_NetworksXYZ:
+      Cleanuparr_Net:         # Shared internal network
+    dns:
+      - ${DNS_1}
+    environment:
+      - ENDPOINT=http://cleanuparr:11011/api/configuration/queue_cleaner # Cleanuparr API
+      - INTERVAL=300                                                     # Interval to check internet connectivity
+      - SUCCESS_THRESHOLD=3                                              # Successive checks needed to (re)enable Queue Cleaner
+      
+networks:
+  Cleanuparr_Net:
+    internal: true
+```
