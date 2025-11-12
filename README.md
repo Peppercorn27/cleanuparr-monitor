@@ -2,6 +2,10 @@
 
 Here is a simple utility container that enables/disables Cleanuparr Queue Cleaner based on internet connectivity.
 
+On startup, the container does an initial network connectivity check and either enables/disables the Queue Cleaner in Cleanuparr, then continues to monitor connectivity at the configured interval.
+
+I made this so the Queue Cleaner doesn't empty any queues should my internet be down for an exteded duration.
+
 Minimal / No support
 
 ## Usage
