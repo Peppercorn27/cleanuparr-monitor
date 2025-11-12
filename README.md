@@ -1,6 +1,6 @@
 # cleanuparr-monitor
 
-Here is a simple utility container that enables/disables Cleanuparr Queue Cleaner based on internet connectivity.
+Here is a simple utility container that enables/disables [Cleanuparr](https://github.com/Cleanuparr/Cleanuparr) Queue Cleaner based on internet connectivity.
 
 On startup, the container does an initial network connectivity check and either enables/disables the Queue Cleaner in Cleanuparr, then continues to monitor connectivity at the configured interval.
 
