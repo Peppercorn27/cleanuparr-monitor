@@ -23,7 +23,6 @@ Docker compose:
       Cleanuparr_Net:         # Shared internal network
     environment:
       - PORT=11011
-      - TZ=Europe/London
     depends_on:
       cleanuparr-monitor:
         condition: service_started
