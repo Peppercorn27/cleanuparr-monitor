@@ -34,8 +34,6 @@ Docker compose:
     networks:
       Other_NetworksXYZ:
       Cleanuparr_Net:         # Shared internal network
-    dns:
-      - ${DNS_1}
     environment:
       - ENDPOINT=http://cleanuparr:11011/api/configuration/queue_cleaner # Cleanuparr API
       - INTERVAL=300                                                     # Interval to check internet connectivity
