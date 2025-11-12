@@ -12,6 +12,8 @@ Minimal / No support
 
 Docker compose:
 ```
+services:
+
   cleanuparr:
     image: ghcr.io/cleanuparr/cleanuparr:latest
     container_name: cleanuparr
